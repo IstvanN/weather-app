@@ -7,5 +7,13 @@
 </head>
 <body>
     <h1>Welcome to archiez's weather app</h1>
+    <h3>Please select a city:</h3>
+    <form action="/" method="POST">
+        <select name="cityID">
+            <option value="44418">London</option>
+        </select><br>    
+        <button>Check weather!</button>
+    </form>
+    <p>{{.}}</p>
 </body>
 </html>

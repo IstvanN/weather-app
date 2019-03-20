@@ -7,7 +7,8 @@ import (
 )
 
 const (
-	port = ":8080"
+	port   = ":8080"
+	apiURL = "https://www.metaweather.com/api/location/"
 )
 
 var tmpl *template.Template
@@ -23,5 +24,10 @@ func main() {
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl.Execute(w, nil)
+	var cityID string
+	if r.Method == http.MethodPost {
+		cityID = r.FormValue("cityID")
+	}
+
+	tmpl.Execute(w, cityID)
 }
