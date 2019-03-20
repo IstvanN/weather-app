@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"net/http"
 	"text/template"
@@ -24,10 +25,15 @@ func main() {
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	var cityID string
+	var resp *http.Response
 	if r.Method == http.MethodPost {
-		cityID = r.FormValue("cityID")
-	}
+		cityID := r.FormValue("cityID")
+		resp, err := http.Get(apiURL + cityID)
+		if err != nil {
+			log.Println(err)
+		}
 
-	tmpl.Execute(w, cityID)
+		decoder := json.NewDecoder(resp.Body)
+	}
+	tmpl.Execute(w, resp)
 }
