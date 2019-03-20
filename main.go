@@ -1,14 +1,20 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
+	"text/template"
 )
 
 const (
 	port = ":8080"
 )
+
+var tmpl *template.Template
+
+func init() {
+	tmpl = template.Must(template.ParseFiles("index.html"))
+}
 
 func main() {
 	http.HandleFunc("/", indexHandler)
@@ -17,5 +23,5 @@ func main() {
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello weather!")
+	tmpl.Execute(w, nil)
 }
