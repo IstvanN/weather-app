@@ -37,6 +37,7 @@ func getHighestPredict(raw rawData) WeatherData {
 	highestPredictData := raw.ConsolidatedWeather[indexOfHighestPredict]
 
 	highestWeatherData := WeatherData{
+		CityName:       raw.Title,
 		State:          highestPredictData.State,
 		MinTemp:        highestPredictData.MinTemp,
 		MaxTemp:        highestPredictData.MaxTemp,
