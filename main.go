@@ -32,7 +32,11 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 			log.Println(err)
 		}
 
-		json.NewDecoder(resp.Body).Decode(&wd)
+		var rd rawData
+		json.NewDecoder(resp.Body).Decode(&rd)
+		wd = getHighestPredict(rd)
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
 	}
 	tmpl.Execute(w, wd)
 }
