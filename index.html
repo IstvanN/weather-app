@@ -14,6 +14,14 @@
         </select><br>    
         <button>Check weather!</button>
     </form>
-    <p>{{.}}</p>
+    {{if .}}
+        <ul>
+            <li>Location: {{.CityName}}</li>
+            <li>Weather: {{.State}}</li>
+            <li>Min temp: {{.MinTemp}}</li>
+            <li>Max temp: {{.MaxTemp}}</li>
+            <li>Actual temp: {{.ActualTemp}}</li>
+        </ul>
+    {{end}}
 </body>
 </html>
