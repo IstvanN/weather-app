@@ -25,7 +25,6 @@ func main() {
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	var resp *http.Response
 	if r.Method == http.MethodPost {
 		cityID := r.FormValue("cityID")
 		resp, err := http.Get(apiURL + cityID)
@@ -33,7 +32,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 			log.Println(err)
 		}
 
-		decoder := json.NewDecoder(resp.Body)
+		json.NewDecoder(resp.Body).Decode(&wd)
 	}
-	tmpl.Execute(w, resp)
+	tmpl.Execute(w, wd)
 }
