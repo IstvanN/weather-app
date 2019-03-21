@@ -14,7 +14,7 @@
         </select><br>    
         <button>Check weather!</button>
     </form>
-    {{if .}}
+    {{if ne .CityName ""}}
         <ul>
             <li>Location: {{.CityName}}</li>
             <li>Weather: {{.State}}</li>
