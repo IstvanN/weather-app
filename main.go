@@ -39,4 +39,5 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	tmpl.Execute(w, wd)
+	wd = WeatherData{}
 }
