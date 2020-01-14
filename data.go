@@ -2,6 +2,7 @@ package main
 
 var wd WeatherData
 
+// rawData
 type rawData struct {
 	ConsolidatedWeather []struct {
 		State          string  `json:"weather_state_name"`
