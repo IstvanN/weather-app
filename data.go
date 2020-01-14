@@ -2,7 +2,7 @@ package main
 
 var wd WeatherData
 
-// rawData
+// rawData is a struct to store the data before selecting
 type rawData struct {
 	ConsolidatedWeather []struct {
 		State          string  `json:"weather_state_name"`
